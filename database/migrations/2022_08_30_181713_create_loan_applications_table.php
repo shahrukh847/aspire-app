@@ -17,8 +17,8 @@ class CreateLoanApplicationsTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->string('mode_of_payment');
-            $table->float('loan_amount', 8, 2);
-            $table->float('remaining_amount', 8, 2)->nullable();
+            $table->float('loan_amount', 8, 4);
+            $table->float('remaining_amount', 8, 4)->nullable();
             $table->integer('loan_duration');
             $table->string('processed_by')->nullable();
             $table->string('purpose')->nullable();

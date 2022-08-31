@@ -13,6 +13,7 @@ use Illuminate\Support\Str;
 use App\Rules\ApproveRejectLoan;
 use Auth;
 use Carbon\Carbon;
+use Log;
 
 class LoanController extends Controller
 {
@@ -61,15 +62,22 @@ class LoanController extends Controller
 				$loan->save();
 
 				if ($request->loan_status == "approved") {
+
 					$emi =  $loan->loan_amount / $loan->loan_duration;
+					$reminder = $loan->loan_amount - (round($emi,4) * $loan->loan_duration);
 
 					for ($i=1; $i <= $loan->loan_duration; $i++) { 
 
 						$amortization = new LoanAmortization(); 
 						$amortization->loan_id = $loan->id;
 						$amortization->user_id = $loan->user_id;
-						$amortization->emi = round($emi,3);
 						$amortization->emi_order = $i;
+
+						if ( $i == $loan->loan_duration) {
+							$emi = $emi + $reminder;
+						}
+
+						$amortization->emi = round($emi,4);
 
 						if ($loan->mode_of_payment == 'weekly') {
 							$daysToAdd = 7 * $i;

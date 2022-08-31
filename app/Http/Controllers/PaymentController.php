@@ -86,7 +86,7 @@ class PaymentController extends Controller
 						->where('loan_id', '=', $request->loan_id)
 						->where('payment_status','=', 'Unpaid')
 						->update([
-							'emi' => round($New_Emi_Value)
+							'emi' => round($New_Emi_Value,4)
 						]);
 				}
 			}

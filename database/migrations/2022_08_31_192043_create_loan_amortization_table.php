@@ -19,9 +19,9 @@ class CreateLoanAmortizationTable extends Migration
             $table->integer('user_id');
             $table->date('emi_date');
             $table->date('payment_date')->nullable();
-            $table->float('emi', 8, 2);
+            $table->float('emi', 8, 4);
             $table->integer('emi_order');
-            $table->float('payment_amount', 8, 2)->nullable();
+            $table->float('payment_amount', 8, 4)->nullable();
             $table->string('payment_status')->default('Unpaid');
             $table->timestamps();
         });

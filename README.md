@@ -44,6 +44,8 @@ Make Custome Rules For Different Kind of validations
 
 PHP Feature Test For Auth
 
+User can Apply weekly or monthly loan
+Add "mode_of_payment":"weekly" for Weekly loan repayment
 
 Project Defination 
 --------------------

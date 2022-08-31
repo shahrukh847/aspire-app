@@ -1,5 +1,3 @@
-# aspire-app
-
 Steps To install App
 --------------------------
 
